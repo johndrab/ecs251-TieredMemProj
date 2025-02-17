@@ -1,0 +1,32 @@
+=== Sequential Access Test ===
+Stride:    4 bytes, Average cycles per access: 2.22
+Stride:    8 bytes, Average cycles per access: 2.46
+Stride:   16 bytes, Average cycles per access: 3.50
+Stride:   32 bytes, Average cycles per access: 6.07
+Stride:   64 bytes, Average cycles per access: 13.08
+Stride:  128 bytes, Average cycles per access: 19.05
+Stride:  256 bytes, Average cycles per access: 21.86
+Stride:  512 bytes, Average cycles per access: 20.99
+Stride: 1024 bytes, Average cycles per access: 20.98
+=== Random Pointer-Chasing Test ===
+Average cycles per access: 0.00
+
+ Performance counter stats for './memTest_Sequential_and_Rand':
+
+            568.50 msec task-clock                #    0.999 CPUs utilized          
+                 1      context-switches          #    0.002 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+            32,826      page-faults               #    0.058 M/sec                  
+     1,250,667,288      cycles                    #    2.200 GHz                    
+       775,404,627      stalled-cycles-frontend   #   62.00% frontend cycles idle   
+     1,237,460,703      instructions              #    0.99  insn per cycle         
+                                                  #    0.63  stalled cycles per insn
+       270,181,616      branches                  #  475.253 M/sec                  
+           345,140      branch-misses             #    0.13% of all branches        
+
+       0.568840985 seconds time elapsed
+
+       0.484722000 seconds user
+       0.084125000 seconds sys
+
+
