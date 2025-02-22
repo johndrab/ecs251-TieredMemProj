@@ -1,0 +1,139 @@
+import m5
+from m5.objects import *
+import os
+
+# Define the L1 cache
+class L1Cache(Cache):
+    assoc = 2
+    tag_latency = 2
+    data_latency = 2
+    response_latency = 2
+    mshrs = 4
+    tgts_per_mshr = 20
+
+    def connectCPU(self, cpu):
+        raise NotImplementedError
+
+    def connectBus(self, bus):
+        self.mem_side = bus.cpu_side_ports
+
+# Define the L1 instruction cache
+class L1ICache(L1Cache):
+    size = '16kB'
+
+    def connectCPU(self, cpu):
+        self.cpu_side = cpu.icache_port
+
+# Define the L1 data cache
+class L1DCache(L1Cache):
+    size = '64kB'
+
+    def connectCPU(self, cpu):
+        self.cpu_side = cpu.dcache_port
+
+# Define the L2 cache
+class L2Cache(Cache):
+    size = '256kB'
+    assoc = 8
+    tag_latency = 20
+    data_latency = 20
+    response_latency = 20
+    mshrs = 20
+    tgts_per_mshr = 12
+
+    def connectCPUSideBus(self, bus):
+        self.cpu_side = bus.mem_side_ports
+
+    def connectMemSideBus(self, bus):
+        self.mem_side = bus.cpu_side_ports
+
+# Create the system
+system = System()
+
+# Set the clock frequency
+system.clk_domain = SrcClockDomain()
+system.clk_domain.clock = "1GHz"
+system.clk_domain.voltage_domain = VoltageDomain()
+
+# Set up the system
+system.mem_mode = "timing"
+system.mem_ranges = [AddrRange("512MiB"), AddrRange("512MiB", "1GiB")]  # Two memory ranges
+
+# Create a simple CPU
+system.cpu = X86TimingSimpleCPU()
+
+# Create the L1 caches
+system.cpu.icache = L1ICache()
+system.cpu.dcache = L1DCache()
+
+# Connect the L1 caches to the CPU
+system.cpu.icache.connectCPU(system.cpu)
+system.cpu.dcache.connectCPU(system.cpu)
+
+# Create an L2 bus
+system.l2bus = L2XBar()
+
+# Connect the L1 caches to the L2 bus
+system.cpu.icache.connectBus(system.l2bus)
+system.cpu.dcache.connectBus(system.l2bus)
+
+# Create the L2 cache
+system.l2cache = L2Cache()
+system.l2cache.connectCPUSideBus(system.l2bus)
+
+# Create a memory bus
+system.membus = SystemXBar()
+
+system.cpu.createInterruptController()
+
+if isinstance(system.cpu, X86CPU):
+    system.cpu.interrupts[0].pio = system.membus.mem_side_ports
+    system.cpu.interrupts[0].int_requestor = system.membus.cpu_side_ports
+    system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
+
+# Connect the L2 cache to the memory bus
+system.l2cache.connectMemSideBus(system.membus)
+
+# Create a DRAM memory controller (fast memory)
+system.dram_ctrl = MemCtrl()
+system.dram_ctrl.dram = DDR3_1600_8x8()
+system.dram_ctrl.dram.range = system.mem_ranges[0]  # First 512MiB for DRAM
+system.dram_ctrl.port = system.membus.mem_side_ports
+
+# Create a second DRAM memory controller (slow memory)
+system.slow_mem_ctrl = MemCtrl()
+system.slow_mem_ctrl.dram = DDR3_1600_8x8()
+system.slow_mem_ctrl.dram.range = system.mem_ranges[1]  # Second 512MiB for slow DRAM
+
+# Simulate slower memory by increasing DRAM timing parameters
+system.slow_mem_ctrl.dram.tRCD = "20ns"  # Row to Column Delay
+system.slow_mem_ctrl.dram.tCL = "20ns"   # CAS Latency
+system.slow_mem_ctrl.dram.tRP = "20ns"   # Row Precharge Time
+system.slow_mem_ctrl.port = system.membus.mem_side_ports
+
+# Connect the system to the memory bus
+system.system_port = system.membus.cpu_side_ports
+
+# Set the X86 "hello world" binary
+thispath = os.path.dirname(os.path.realpath(__file__))
+binary = os.path.join(
+    thispath,
+    "../../../",
+    "tests/test-progs/hello/bin/x86/linux/hello",
+)
+
+system.workload = SEWorkload.init_compatible(binary)
+
+# Create a process for the "Hello World" application
+process = Process()
+process.cmd = [binary]
+system.cpu.workload = process
+system.cpu.createThreads()
+
+# Set up the root SimObject and start the simulation
+root = Root(full_system=False, system=system)
+m5.instantiate()
+
+print(f"Beginning simulation!")
+exit_event = m5.simulate()
+print(f"Exiting @ tick {m5.curTick()} because {exit_event.getCause()}")
