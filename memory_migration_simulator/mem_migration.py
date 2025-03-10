@@ -1,6 +1,6 @@
 import time
 import random
-
+import matplotlib.pyplot as plt
 
 class MigrationController:
     def __init__(self, dram_size, nvm_size, threshold=4):
@@ -230,13 +230,35 @@ def generate_LRU_memory_accesses(num_accesses=500, dram_size=100, nvm_size=1000)
     return memory_accesses
 
 
-def run_test(policy, policy_name, memory_accesses):
-    print(f"\n--- Running {policy_name} ---")
+def plot_results(results):
+    policies = list(results.keys())
+    migrations = [results[p]['migrations'] for p in policies]
+    execution_times = [results[p]['execution_time'] for p in policies]
+    
+    fig, ax1 = plt.subplots()
+    
+    ax1.set_xlabel('Migration Policies')
+    ax1.set_ylabel('Total Migrations', color='tab:blue')
+    ax1.bar(policies, migrations, color='tab:blue', alpha=0.6, label='Total Migrations')
+    ax1.tick_params(axis='y', labelcolor='tab:blue')
+    
+    ax2 = ax1.twinx()
+    ax2.set_ylabel('Execution Time (ms)', color='tab:red')
+    ax2.plot(policies, execution_times, color='tab:red', marker='o', label='Execution Time')
+    ax2.tick_params(axis='y', labelcolor='tab:red')
+    
+    fig.tight_layout()
+    plt.title('Comparison of Migration Policies')
+    plt.show()
 
+def run_test(policy, policy_name, memory_accesses, results):
     for addr in memory_accesses:
-        #print(addr)
         policy.access_memory(addr)
-
+    
+    results[policy_name] = {
+        'migrations': policy.get_migration_count(),
+        'execution_time': policy.get_total_access_time()
+    }
  
     print(f"Policy: {policy_name}")
     print(f"  Total Migrations: {policy.get_migration_count()}")
@@ -249,6 +271,8 @@ def run_test(policy, policy_name, memory_accesses):
 def main():
     dram_size = 10
     nvm_size = 100
+    results = {}
+
 
     for test_pat in range(3):
         print("------------------------------------Test Pattern"+str(test_pat)+"--------------------------------------")
@@ -261,23 +285,21 @@ def main():
     
         print("Pattern:"+str(memory_accesses))    
 
-        # Run basic migration test
-        no_migration = No_migration(dram_size, nvm_size)
-        run_test(no_migration, "No Migration", memory_accesses)
-
-        # Run basic migration test
-        basic_migration = MigrationController(dram_size, nvm_size)
-        run_test(basic_migration, "Threshold-Based Migration", memory_accesses)
-
-        # Run prefetching migration test
-        prefetch_migration = PrefetchingMigrationController(dram_size, nvm_size)
-        run_test(prefetch_migration, "Prefetching Migration", memory_accesses)
-
-        # Run LRU migration test
-        lru_migration = LRUMigrationController(dram_size, nvm_size)
-        run_test(lru_migration, "LRU Migration", memory_accesses)
+        
+        policies = [
+            (No_migration(dram_size, nvm_size), "No Migration"),
+            (MigrationController(dram_size, nvm_size), "Threshold-Based Migration"),
+            (PrefetchingMigrationController(dram_size, nvm_size), "Prefetching Migration"),
+            (LRUMigrationController(dram_size, nvm_size), "LRU Migration")
+        ]
+        
+        for policy, name in policies:
+            run_test(policy, name, memory_accesses, results)
+        
+        plot_results(results)
 
 
 
 if __name__ == "__main__":
     main()
+
