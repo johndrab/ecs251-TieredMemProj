@@ -17,6 +17,7 @@ Once you have completed creating the group project and are ready to set up your 
    - Ensure the physical node type is an x86 multicore machine.
    - Other settings can be left as default.
    - Set the start time and duration for the experiment, or leave the start time blank to create it immediately.
+![image](https://github.com/user-attachments/assets/2b01609f-b8f2-437f-8c19-8cbc17bfb058)
 
 ### Accessing the Experiment
 Once the experiment is ready, you can SSH into it using the provided SSH command in the **List View**.
