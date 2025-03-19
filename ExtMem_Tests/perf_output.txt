@@ -1,0 +1,182 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 39K of event 'cache-misses:u'
+# Event count (approx.): 105714621
+#
+# Overhead  Command        Shared Object         Symbol                         
+# ........  .............  ....................  ...............................
+#
+    94.65%  stress         stress                [.] 0x0000000000001b7e
+     3.52%  stress         stress                [.] 0x0000000000001b88
+     0.96%  stress         stress                [.] 0x0000000000001b7a
+     0.38%  stress         stress                [.] 0x0000000000001b82
+     0.22%  stress         stress                [.] 0x0000000000001b49
+     0.15%  stress         [unknown]             [k] 0xffffffffa8600ab0
+     0.07%  stress         stress                [.] 0x0000000000001b8b
+     0.03%  stress         stress                [.] 0x0000000000001b45
+     0.01%  stress         libc.so.6             [.] _int_malloc
+     0.01%  stress_cmd.sh  libtinfo.so.6.3       [.] 0x000000000000e450
+     0.00%  stress         [unknown]             [k] 0xffffffffa8600d70
+     0.00%  stress         stress                [.] 0x0000000000001b4c
+     0.00%  stress_cmd.sh  libc.so.6             [.] __strcmp_avx2
+     0.00%  stress_cmd.sh  libc.so.6             [.] __libc_fcntl64
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] strcmp
+     0.00%  stress_cmd.sh  libc.so.6             [.] __GI___stat64
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_relocate_object
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000005eba3
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_check_map_versions
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_important_hwcaps
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] do_lookup_x
+     0.00%  stress         [unknown]             [k] 0xffffffffa8600178
+     0.00%  stress         stress                [.] 0x0000000000003a30
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] sbrk
+     0.00%  stress         libc.so.6             [.] __strcmp_avx2
+     0.00%  stress         libc.so.6             [.] malloc
+     0.00%  stress         libc.so.6             [.] _IO_fflush
+     0.00%  stress         libc.so.6             [.] __vfprintf_internal
+     0.00%  stress         libc.so.6             [.] __wait
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_sysdep_start
+     0.00%  stress         stress                [.] 0x0000000000001b5f
+     0.00%  stress         stress                [.] 0x0000000000001b59
+     0.00%  stress         ld-linux-x86-64.so.2  [.] strcmp
+     0.00%  stress         ld-linux-x86-64.so.2  [.] dl_main
+     0.00%  stress         stress                [.] 0x0000000000001ad9
+     0.00%  stress         ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     0.00%  stress         libm.so.6             [.] __sincosf_ifunc
+     0.00%  stress         stress                [.] 0x0000000000001b02
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_start
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000005ff8d
+     0.00%  stress         libc.so.6             [.] usleep
+     0.00%  stress_cmd.sh  bash                  [.] 0x0000000000054921
+     0.00%  stress         [unknown]             [k] 0xffffffffa8600eb0
+     0.00%  stress         stress                [.] 0x0000000000001ae0
+     0.00%  stress_cmd.sh  bash                  [.] 0x0000000000085e97
+     0.00%  stress         libc.so.6             [.] clock_nanosleep@GLIBC_2.2.5
+     0.00%  stress_cmd.sh  libc.so.6             [.] sigemptyset
+     0.00%  stress         libc.so.6             [.] __nanosleep
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000010713c
+     0.00%  stress_cmd.sh  bash                  [.] close_buffered_fd
+     0.00%  stress_cmd.sh  [unknown]             [k] 0xffffffffa8600ab0
+     0.00%  stress         libc.so.6             [.] sysmalloc
+     0.00%  stress         libc.so.6             [.] sysmalloc_mmap.constprop.0
+     0.00%  stress_cmd.sh  bash                  [.] 0x0000000000107135
+     0.00%  stress_cmd.sh  libc.so.6             [.] __GI___wait4
+     0.00%  stress_cmd.sh  libc.so.6             [.] __run_fork_handlers
+
+
+# Samples: 702K of event 'cache-references:u'
+# Event count (approx.): 120733924
+#
+# Overhead  Command        Shared Object         Symbol                           
+# ........  .............  ....................  .................................
+#
+    82.71%  stress         stress                [.] 0x0000000000001b7e
+    12.26%  stress         [unknown]             [k] 0xffffffffa8600ab0
+     3.18%  stress         stress                [.] 0x0000000000001b88
+     1.00%  stress         stress                [.] 0x0000000000001b7a
+     0.43%  stress         stress                [.] 0x0000000000001b82
+     0.23%  stress         stress                [.] 0x0000000000001b49
+     0.08%  stress         stress                [.] 0x0000000000001b45
+     0.05%  stress         stress                [.] 0x0000000000001b8b
+     0.01%  stress         [unknown]             [k] 0xffffffffa8600e10
+     0.01%  stress         [unknown]             [k] 0xffffffffa8600d70
+     0.01%  stress_cmd.sh  libc.so.6             [.] __sysconf
+     0.00%  stress_cmd.sh  libc.so.6             [.] _int_malloc
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000003aa51
+     0.00%  stress_cmd.sh  bash                  [.] initialize_flags
+     0.00%  stress_cmd.sh  libc.so.6             [.] qsort
+     0.00%  stress_cmd.sh  [unknown]             [k] 0xffffffffa8600ab0
+     0.00%  stress         stress                [.] 0x0000000000001b4c
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_relocate_object
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] check_match
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] do_lookup_x
+     0.00%  stress         stress                [.] 0x0000000000001ac1
+     0.00%  stress         ld-linux-x86-64.so.2  [.] _dl_allocate_tls_init
+     0.00%  stress         libc.so.6             [.] _itoa_word
+     0.00%  stress         libc.so.6             [.] usleep
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] strcmp
+     0.00%  stress         ld-linux-x86-64.so.2  [.] do_lookup_x
+     0.00%  stress         ld-linux-x86-64.so.2  [.] _dl_check_map_versions
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_new_object
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000005eba3
+     0.00%  stress         libc.so.6             [.] _int_malloc
+     0.00%  stress         ld-linux-x86-64.so.2  [.] open_verify.constprop.0
+     0.00%  stress         libc.so.6             [.] __run_fork_handlers
+     0.00%  stress         [unknown]             [k] 0xffffffffa8600000
+     0.00%  stress         ld-linux-x86-64.so.2  [.] intel_check_word.constprop.0
+     0.00%  stress         libc.so.6             [.] malloc
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] init_cpu_features.constprop.0
+     0.00%  stress         ld-linux-x86-64.so.2  [.] _dl_important_hwcaps
+     0.00%  stress         [unknown]             [k] 0xffffffffa8600178
+     0.00%  stress         stress                [.] 0x0000000000001ab8
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_start
+     0.00%  stress_cmd.sh  libc.so.6             [.] __sigaction
+     0.00%  stress         libc.so.6             [.] __libc_fork
+     0.00%  stress         stress                [.] 0x0000000000001b5f
+     0.00%  stress         stress                [.] 0x0000000000001b59
+     0.00%  stress_cmd.sh  bash                  [.] close_buffered_fd
+     0.00%  stress         libc.so.6             [.] sysmalloc
+     0.00%  stress         stress                [.] 0x0000000000001b02
+     0.00%  stress_cmd.sh  libc.so.6             [.] __run_fork_handlers
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000005ff8d
+     0.00%  stress         [unknown]             [k] 0xffffffffa8600db0
+     0.00%  stress         libc.so.6             [.] clock_nanosleep@GLIBC_2.2.5
+     0.00%  stress         libc.so.6             [.] _Fork
+     0.00%  stress_cmd.sh  bash                  [.] 0x000000000010713c
+     0.00%  stress         libc.so.6             [.] __nanosleep
+     0.00%  stress_cmd.sh  libc.so.6             [.] __libc_fork
+     0.00%  stress_cmd.sh  bash                  [.] 0x0000000000107135
+     0.00%  stress_cmd.sh  libc.so.6             [.] _Fork
+     0.00%  stress_cmd.sh  libc.so.6             [.] __GI___wait4
+
+
+# Samples: 2  of event 'major-faults:u'
+# Event count (approx.): 2
+#
+# Overhead  Command        Shared Object         Symbol                 
+# ........  .............  ....................  .......................
+#
+    50.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_relocate_object
+    50.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] dl_main
+
+
+# Samples: 1M of event 'minor-faults:u'
+# Event count (approx.): 120699758
+#
+# Overhead  Command        Shared Object         Symbol                        
+# ........  .............  ....................  ..............................
+#
+    99.13%  stress         stress                [.] 0x0000000000001b45
+     0.87%  stress         stress                [.] 0x0000000000001b7a
+     0.00%  stress_cmd.sh  libtinfo.so.6.3       [.] _nc_read_termtype
+     0.00%  stress         libc.so.6             [.] __lll_elision_init
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_allocate_tls_storage
+     0.00%  stress_cmd.sh  libc.so.6             [.] malloc
+     0.00%  stress         stress                [.] 0x0000000000001ab8
+     0.00%  stress_cmd.sh  libc.so.6             [.] __GI___sigprocmask
+     0.00%  stress         libc.so.6             [.] cfree@GLIBC_2.2.5
+     0.00%  stress         libc.so.6             [.] __libc_fork
+     0.00%  stress         libc.so.6             [.] usleep
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_sysdep_start
+     0.00%  stress_cmd.sh  libc.so.6             [.] __strchrnul_avx2
+     0.00%  stress_cmd.sh  bash                  [.] make_child
+     0.00%  stress         libc.so.6             [.] _Fork
+     0.00%  stress         libc.so.6             [.] sysmalloc_mmap.constprop.0
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _dl_start
+     0.00%  stress_cmd.sh  libc.so.6             [.] __libc_fork
+     0.00%  stress_cmd.sh  libc.so.6             [.] _int_malloc
+     0.00%  stress         libc.so.6             [.] malloc
+     0.00%  stress_cmd.sh  bash                  [.] hash_insert
+     0.00%  stress_cmd.sh  bash                  [.] _rl_init_terminal_io
+     0.00%  stress_cmd.sh  ld-linux-x86-64.so.2  [.] _start
+     0.00%  stress_cmd.sh  libc.so.6             [.] _Fork
+
+
+#
+# (Tip: To separate samples by time use perf report --sort time,overhead,sym)
+#
