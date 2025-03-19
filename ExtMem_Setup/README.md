@@ -17,19 +17,23 @@ Once you have completed creating the group project and are ready to set up your 
    - Ensure the physical node type is an x86 multicore machine.
    - Other settings can be left as default.
    - Set the start time and duration for the experiment, or leave the start time blank to create it immediately.
+
 ![image](https://github.com/user-attachments/assets/2b01609f-b8f2-437f-8c19-8cbc17bfb058)
 
 ### Accessing the Experiment
 Once the experiment is ready, you can SSH into it using the provided SSH command in the **List View**.
 
 ### Setting Up ExtMem
-1. Clone and set up the ExtMem repository. You can follow the **Getting Started** section on the ExtMem GitHub page for this part.
-2. When updating submodules, use the following command to display progress (as it can take some time):
+1. Clone and set up the ExtMem repository. You can follow the **Getting Started** section on the [ExtMem GitHub page](https://github.com/SepehrDV2/ExtMem#) for this part.
+2. When running the update submodules command I recommend using the `--progress` flag to display progress (as it can take some time):
    ```sh
    git submodule update --init --progress
    ```
 3. Run the first two `apt install` commands to install the necessary libraries.
-
+   ```sh
+   sudo apt install bc binutils bison dwarves flex gcc git gnupg2 gzip libelf-dev libncurses5-dev libssl-dev make openssl pahole perl-base rsync tar xz-utils
+   sudo apt install liburing-dev liburing2
+   ```
 ### Custom Kernel Setup
 From this point, it is recommended to follow the custom kernel setup guide provided [here](https://pages.cs.wisc.edu/~markm/kernel-build-cloudlab.html) (linked in the resources section). This guide provides a cleaner setup of custom kernels specifically tailored for Cloudlab, and has been more reliable in practice.
 
