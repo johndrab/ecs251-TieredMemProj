@@ -18,6 +18,8 @@ Once you have completed creating the group project and are ready to set up your 
    - Other settings can be left as default.
    - Set the start time and duration for the experiment, or leave the start time blank to create it immediately.
 
+![image](https://github.com/user-attachments/assets/ca7e4b37-f970-4fec-bf8d-9313f4a94eda)
+
 ### Accessing the Experiment
 Once the experiment is ready, you can SSH into it using the provided SSH command in the **List View**.
 
