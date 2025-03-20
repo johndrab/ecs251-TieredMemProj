@@ -230,27 +230,47 @@ def generate_LRU_memory_accesses(num_accesses=500, dram_size=100, nvm_size=1000)
     return memory_accesses
 
 
+
+
 def plot_results(results):
     policies = list(results.keys())
     migrations = [results[p]['migrations'] for p in policies]
     execution_times = [results[p]['execution_time'] for p in policies]
     
-    fig, ax1 = plt.subplots()
     
-    ax1.set_xlabel('Migration Policies')
-    ax1.set_ylabel('Total Migrations', color='tab:blue')
-    ax1.bar(policies, migrations, color='tab:blue', alpha=0.6, label='Total Migrations')
-    ax1.tick_params(axis='y', labelcolor='tab:blue')
+    fig, ax1 = plt.subplots(figsize=(10, 6))
+    
+    ax1.set_xlabel('Migration Policies', fontsize=14, fontweight='bold', fontname='Arial')  # Increase font size and bold labels with Arial font
+    ax1.set_ylabel('Total Migrations', color='tab:blue', fontsize=14, fontweight='bold', fontname='Arial')
+    ax1.bar(policies, migrations, color='#002855', edgecolor='#B3A369', linewidth=1)  # Use Yale Blue for bars with Gold edges
+    ax1.tick_params(axis='y', labelcolor='#002855')
     
     ax2 = ax1.twinx()
-    ax2.set_ylabel('Execution Time (ms)', color='tab:red')
-    ax2.plot(policies, execution_times, color='tab:red', marker='o', label='Execution Time')
-    ax2.tick_params(axis='y', labelcolor='tab:red')
-    
+    ax2.set_ylabel('Execution Time (ms)', color='#CC9900')
+    ax2.plot(policies, execution_times, marker='o', linestyle='-', color='#CC9900', linewidth=2)
+    ax2.tick_params(axis='y', labelcolor='#CC9900')
+    plt.title('Comparison of Migration Policies', fontsize=16, fontweight='bold', fontname='Arial')  # Increase title font size and bold
     fig.tight_layout()
-    plt.title('Comparison of Migration Policies')
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add grid for easier comparison
+    plt.legend([], frameon=False)  # Remove legend if not needed
     plt.show()
 
+"""""
+     # Plotting performance
+    plt.figure(figsize=(10, 6))  # Increase figure size
+    plt.bar(policies, migrations, color='#002855', edgecolor='#B3A369', linewidth=1)  # Use Yale Blue for bars with Gold edges
+    plt.plot(policies, execution_times, marker='o', linestyle='-', color='#FFBF00', linewidth=2)  # Use lighter Aggie Gold for the trend line
+    plt.xlabel('Migration Policies', fontsize=14, fontweight='bold', fontname='Arial')  # Increase font size and bold labels with Arial font
+    plt.ylabel('Total Copy Time (ms)', fontsize=14, fontweight='bold', fontname='Arial')
+    plt.title('Comparison of Migration Policies', fontsize=16, fontweight='bold', fontname='Arial')  # Increase title font size and bold
+    plt.xticks(rotation=0, ha='center', fontsize=12, fontname='Arial')  # Place labels horizontally and center them with Arial font
+    
+    plt.tight_layout()  # Ensure labels fit within the figure
+    plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add grid for easier comparison
+    plt.legend([], frameon=False)  # Remove legend if not needed
+    plt.show()
+
+"""""
 def run_test(policy, policy_name, memory_accesses, results):
     for addr in memory_accesses:
         policy.access_memory(addr)
@@ -282,7 +302,7 @@ def main():
             memory_accesses = generate_LRU_memory_accesses()
         else:
             memory_accesses = generate_random_memory_accesses()
-    
+
         print("Pattern:"+str(memory_accesses))    
 
         
