@@ -12,7 +12,7 @@ Implementation of four different memory migration policies:
 Generates memory access patterns to test the performance of each policy.
 Visualizes results using matplotlib for comparison.
 
-Requirements
+Requirements:
 Python 3.x
 matplotlib
 
