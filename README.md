@@ -10,26 +10,6 @@ This project analyses adaptive memory management frameworks that can significant
 
 ---
 
-### Project Content
-
-1. **High-level Tiered Management:**  
-   - The Python code for high-level tiered management is available in `Tiered Memory Management (Baseline).ipynb`.
-
-2. **Optimizing Memory Copy:**  
-   - The file for optimizing memory copy can be found in `Optimizing Memory Copying.ipynb`.
-
-3. **Anti-Thrashing Strategies:**  
-   - The file for anti-thrashing strategies is located as `Anti-Thrashing.ipynb`.
-
-4. **Memory Migration Strategies:**  
-   - Files related to memory migration strategies are located under the `memory_migration_simulator` directory.
-
-5. **ExtMem Setup and Testing:**  
-   - **Setup Files:** Located in the `ExtMem_Setup` folder.  
-   - **Testing Files:** Found under the `ExtMem_Tests` folder.
-
----
-
 ## Motivation & Challenges
 
 - **High Latency & Bottlenecks:**  
@@ -73,6 +53,26 @@ This project analyses adaptive memory management frameworks that can significant
    - Extensive experiments evaluate the performance of different memory management strategies under varied workloads.
    - Key findings highlight that vectorized copying, advanced prefetching techniques, and optimized machine learning-based page placement significantly enhance performance.
    - Results demonstrate that our proactive approach reduces migration latency and mitigates resource thrashing, thus ensuring higher throughput and efficiency.
+
+---
+
+### Project Content
+
+1. **High-level Tiered Management:**  
+   - The Python code for high-level tiered management is available in `Tiered Memory Management (Baseline).ipynb`.
+
+2. **Optimizing Memory Copy:**  
+   - The file for optimizing memory copy can be found in `Optimizing Memory Copying.ipynb`.
+
+3. **Anti-Thrashing Strategies:**  
+   - The file for anti-thrashing strategies is located as `Anti-Thrashing.ipynb`.
+
+4. **Memory Migration Strategies:**  
+   - Files related to memory migration strategies are located under the `memory_migration_simulator` directory.
+
+5. **ExtMem Setup and Testing:**  
+   - **Setup Files:** Located in the `ExtMem_Setup` folder.  
+   - **Testing Files:** Found under the `ExtMem_Tests` folder.
 
 ---
 
