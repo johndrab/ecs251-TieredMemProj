@@ -54,6 +54,10 @@ This project analyses adaptive memory management frameworks that can significant
    - Key findings highlight that vectorized copying, advanced prefetching techniques, and optimized machine learning-based page placement significantly enhance performance.
    - Results demonstrate that our proactive approach reduces migration latency and mitigates resource thrashing, thus ensuring higher throughput and efficiency.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c0b4fbc8-1fac-4e4a-a519-fb62c92bded3" alt="Readme Image">
+</p>
+
 ---
 
 ## Project Content
