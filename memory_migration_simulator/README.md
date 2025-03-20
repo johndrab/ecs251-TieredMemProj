@@ -51,10 +51,5 @@ python script_name.py
 - **No Migration:** Pages remain in their original memory location.
 - **Threshold-Based Migration:** Pages are moved to DRAM when accessed more than a threshold value.
 - **Prefetching Migration:** Neighboring pages are migrated with the accessed page to optimize future access.
-- **LRU Migration:** Least recently used pages are migrated to NVM to free up space in DRAM.
+- **LRU Migration:** Least recently used pages are migrated to NVM to free up space in DRAM. *Note: the LRU page is a hardcode "85" in this script. Please modify by your needs.
 
-## License
-This project is licensed under the MIT License.
-
-## Contributions
-Contributions and suggestions are welcome! Feel free to submit a pull request or open an issue.
