@@ -56,7 +56,7 @@ This project analyses adaptive memory management frameworks that can significant
 
 ---
 
-### Project Content
+## Project Content
 
 1. **High-level Tiered Management:**  
    - The Python code for high-level tiered management is available in `Tiered Memory Management (Baseline).ipynb`.
